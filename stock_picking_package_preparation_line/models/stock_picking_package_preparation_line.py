@@ -54,9 +54,10 @@ class StockPickingPackagePreparationLine(models.Model):
     @api.onchange('product_id')
     def _onchange_product_id(self):
         if self.product_id:
-            name = self.product_id.name_get()
-            if name:
-                self.name = name[0][1]
+            #name = self.product_id.name_get()
+            #if name:
+            #    self.name = name[0][1]
+            self.name = self.product_id.description_sale
             self.product_uom_id = self.product_id.uom_id.id
 
     @api.model
